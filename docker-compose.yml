@@ -1,0 +1,28 @@
+version: '3.7'
+
+volumes:
+  kafka_data:
+  zk_data:
+  zk_logs:
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.5.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    volumes:
+    - zk_data:/var/lib/zookeeper/data
+    - zk_logs:/var/lib/zookeeper/log
+
+  kafka:
+    image: confluentinc/cp-kafka:5.5.0
+    environment:
+    - KAFKA_BROKER_ID=1
+    - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+    - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    - ALLOW_PLAINTEXT_LISTENER=yes
+    - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+    volumes:
+    - kafka_data:/var/lib/kafka/data
+    depends_on:
+    - zookeeper
