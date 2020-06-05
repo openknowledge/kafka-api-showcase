@@ -1,6 +1,6 @@
 # Kafka Showcase
 
-This is a showcase demonstrating different ways to connect and communicate with Apache Kafka. It contains sample Java Enterprise based message producer and consumer applications using [Microprofile Reactive Messaging](https://microprofile.io/project/eclipse/microprofile-reactive-messaging), JMS or [Kafka Streams](https://kafka.apache.org/documentation/streams/) to send or receive messages from the Kafka broker.
+This is a showcase demonstrating different ways to connect and communicate with Apache Kafka. It contains sample Java Enterprise based message producer and consumer applications using [Microprofile Reactive Messaging](https://microprofile.io/project/eclipse/microprofile-reactive-messaging), JMS or [Kafka Streams](https://kafka.apache.org/documentation/streams/) to send or receive messages from the Kafka broker. 
 
 Software requirements to run the samples are `maven`, `openjdk-1.8` (or any other 1.8 JDK) and `docker`.
 
@@ -20,6 +20,14 @@ $ mvn clean package
 $ docker-compose up --build
 ```
 
+Wait for a message log similar to this:
+
+> kafka-reactive-messaging-consumer_1  | [AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 35.800 seconds.
+
+> kafka-reactive-messaging-producer_1  | [AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 36.693 seconds.
+
+If everything worked the producers start sending messages automatically every 2s. Additionally a custom message can be send by by calling `http://localhost:9080/kafka-reactive-messaging-producer/api/messages?msg=<custom message>`
+
 ## Resolving issues
 
 Sometimes it may happen that the containers did not stop as expected when trying to stop the pipeline early. This may
@@ -35,3 +43,17 @@ If there are containers remaining although the application has been stopped you 
 ````shell script
 $ docker rm <ids of the containers>
 ````
+
+## Samples
+
+### Microprofile Reactive Messaging
+
+[Microprofile Reactive Messaging](https://microprofile.io/project/eclipse/microprofile-reactive-messaging) is a specification providing asynchronous messaging support based on Reactive Streams for MicroProfile. It's implementations (e.g. [Smallrye Reactive Messaging](https://smallrye.io/smallrye-reactive-messaging/) which is used by Quarkus) supports Apache Kafka, AMQP, MQTT, JMS, WebSocket and other messaging technologies. 
+
+Reactive Messaging can handle messages generated from within the application but also interact with remote brokers. Reactive Messaging Connectors interacts with these remote brokers to retrieve messages and send messages using various protocols and technology. Each connector is dedicated to a specific technology. For example, a Kafka Connector is responsible to interact with Kafka, while a MQTT Connector is responsible for MQTT interactions.
+
+The sample contains two modules using MP Reactive Messaging to communicate with the Kafka broker  
+* `kafka-reactive-messaging-producer` containing a Kafka producer
+* `kafka-reactive-messaging-consumer` containing a Kafka consumer
+
+For further descriptions concerning Microprofile Reactive Messaging and the samples read [here](kafka-reactive-messaging/README.md).

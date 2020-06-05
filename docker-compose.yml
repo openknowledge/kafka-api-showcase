@@ -26,3 +26,15 @@ services:
     - kafka_data:/var/lib/kafka/data
     depends_on:
     - zookeeper
+
+  kafka-reactive-messaging-producer:
+    image: kafka-showcase/kafka-reactive-messaging-producer:0
+    ports:
+    - 9080:9080
+    depends_on:
+    - kafka
+
+  kafka-reactive-messaging-consumer:
+    image: kafka-showcase/kafka-reactive-messaging-consumer:0
+    depends_on:
+    - kafka
