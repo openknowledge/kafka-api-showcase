@@ -27,23 +27,6 @@ services:
     depends_on:
     - zookeeper
 
-  kafka-producer:
-    image: kafka-showcase/kafka-producer:0
-    ports:
-    - 9080:9080
-    depends_on:
-    - kafka
-
-  kafka-consumer:
-    image: kafka-showcase/kafka-consumer:0
-    depends_on:
-    - kafka
-
-  kafka-streams:
-    image: kafka-showcase/kafka-streams:0
-    depends_on:
-    - kafka-producer
-
   kafka-ra-producer:
     image: kafka-showcase/kafka-ra-producer:0
     ports:
@@ -53,17 +36,5 @@ services:
 
   kafka-ra-consumer:
     image: kafka-showcase/kafka-ra-consumer:0
-    depends_on:
-    - kafka
-
-  kafka-reactive-messaging-producer:
-    image: kafka-showcase/kafka-reactive-messaging-producer:0
-    ports:
-    - 9082:9080
-    depends_on:
-    - kafka
-
-  kafka-reactive-messaging-consumer:
-    image: kafka-showcase/kafka-reactive-messaging-consumer:0
     depends_on:
     - kafka

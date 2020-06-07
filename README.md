@@ -1,6 +1,6 @@
 # Kafka Showcase
 
-This is a showcase demonstrating different ways to connect and communicate with Apache Kafka. It contains sample Java Enterprise based message producer and consumer applications using [Microprofile Reactive Messaging](https://microprofile.io/project/eclipse/microprofile-reactive-messaging), JMS or [Kafka Streams](https://kafka.apache.org/documentation/streams/) to send or receive messages from the Kafka broker. 
+This is a showcase demonstrating different ways to connect and communicate with Apache Kafka. It contains sample Java Enterprise based message producer and consumer applications using [Microprofile Reactive Messaging](https://microprofile.io/project/eclipse/microprofile-reactive-messaging), Kafka Resource Adapter or Kafka Core APIS like [Kafka Streams](https://kafka.apache.org/documentation/streams/) to send or receive messages from the Kafka broker. 
 
 Software requirements to run the samples are `maven`, `openjdk-1.8` (or any other 1.8 JDK) and `docker`.
 
@@ -26,7 +26,10 @@ Wait for a message log similar to this:
 
 > kafka-reactive-messaging-producer_1  | [AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 36.693 seconds.
 
-If everything worked the producers start sending messages automatically every 2s. Additionally a custom message can be send by by calling `http://localhost:9080/kafka-producer/api/messages?msg=<custom message>` or `http://localhost:9081/kafka-reactive-messaging-producer/api/messages?msg=<custom message>`
+If everything worked the producers start sending messages automatically every 2s. Additionally a custom message can be send by by calling on of the following URLs: 
+* `http://localhost:9080/kafka-producer/api/messages?msg=<custom message>` 
+* `http://localhost:9081/kafka-ra-producer/api/messages?msg=<custom message>` 
+* `http://localhost:9082/kafka-reactive-messaging-producer/api/messages?msg=<custom message>`
 
 ## Resolving issues
 
@@ -46,16 +49,26 @@ $ docker rm <ids of the containers>
 
 ## Samples
 
-### Kafka APIs
+### Kafka Core APIs
 
 Kafka provides five core APIs which enables clients to send, read or stream data and connect to or manage the Kafka broker.
 
-The sample contains three modules using MP Reactive Messaging to communicate with the Kafka broker  
+The sample contains three modules  
 * `kafka-producer` containing a Kafka producer using the Producer API
 * `kafka-consumer` containing a Kafka consumer using the Consumer API
 * `kafka-streams` containing a Kafka Streams consumer using the Streams API
 
-For further descriptions concerning Kafka core APIs and the sample read [here](kafka-core-apis/README.md).
+For further descriptions concerning Kafka Core APIs and the sample read [here](kafka-core-apis/README.md).
+
+### Kafka Resource Adapter (by Payara)
+
+Payara provides a [resource adapter](https://github.com/payara/Cloud-Connectors/tree/master/Kafka) for Apache Kafka which enables using Message Driven Beans to consume Kafka records in a Java Enterprise application.
+
+The sample contains two modules using the Payara Kafka resource adapter to communicate with the Kafka broker  
+* `kafka-ra-producer` containing a Kafka producer
+* `kafka-ra-consumer` containing a Kafka consumer
+
+For further descriptions concerning the Payara resource adapter and the sample read [here](kafka-ra/README.md).
 
 ### Microprofile Reactive Messaging
 

@@ -3,16 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <name>Kafka Showcase</name>
 
     <groupId>de.openknowledge.showcase.kafka</groupId>
-    <artifactId>kafka-showcase</artifactId>
+    <artifactId>kafka-ra</artifactId>
     <packaging>pom</packaging>
     <version>0</version>
 
     <modules>
-        <module>kafka-core-apis</module>
-        <module>kafka-ra</module>
-        <module>kafka-reactive-messaging</module>
+        <module>kafka-ra-producer</module>
+        <module>kafka-ra-consumer</module>
     </modules>
 </project>
