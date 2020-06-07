@@ -38,3 +38,8 @@ services:
     image: kafka-showcase/kafka-reactive-messaging-consumer:0
     depends_on:
     - kafka
+
+  kafka-streams:
+    image: kafka-showcase/kafka-streams:0
+    depends_on:
+    - kafka-reactive-messaging-producer

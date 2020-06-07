@@ -46,6 +46,17 @@ $ docker rm <ids of the containers>
 
 ## Samples
 
+### Kafka APIs
+
+Kafka provides five core APIs which enables clients to send, read or stream data and connect to or manage the Kafka broker.
+
+The sample contains three modules using MP Reactive Messaging to communicate with the Kafka broker  
+* `kafka-producer` containing a Kafka producer using the Producer API
+* `kafka-consumer` containing a Kafka consumer using the Consumer API
+* `kafka-streams` containing a Kafka Streams consumer using the Streams API
+
+For further descriptions concerning Kafka core APIs and the sample read [here](kafka-core-apis/README.md).
+
 ### Microprofile Reactive Messaging
 
 [Microprofile Reactive Messaging](https://microprofile.io/project/eclipse/microprofile-reactive-messaging) is a specification providing asynchronous messaging support based on Reactive Streams for MicroProfile. It's implementations (e.g. [Smallrye Reactive Messaging](https://smallrye.io/smallrye-reactive-messaging/) which is used by Quarkus) supports Apache Kafka, AMQP, MQTT, JMS, WebSocket and other messaging technologies. 
@@ -56,4 +67,4 @@ The sample contains two modules using MP Reactive Messaging to communicate with 
 * `kafka-reactive-messaging-producer` containing a Kafka producer
 * `kafka-reactive-messaging-consumer` containing a Kafka consumer
 
-For further descriptions concerning Microprofile Reactive Messaging and the samples read [here](kafka-reactive-messaging/README.md).
+For further descriptions concerning Microprofile Reactive Messaging and the sample read [here](kafka-reactive-messaging/README.md).
