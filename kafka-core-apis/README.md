@@ -10,12 +10,20 @@ Kafka provides five core APIs which enables clients to send, read or stream data
 
 
 The sample contains three modules using MP Reactive Messaging to communicate with the Kafka broker  
-* `kafka-producer` containing a Kafka producer using the Producer API **(not yet implemented)**
-* `kafka-consumer` containing a Kafka consumer using the Consumer API **(not yet implemented)**
+* `kafka-producer` containing a Kafka producer using the Producer API
+* `kafka-consumer` containing a Kafka consumer using the Consumer API
 * `kafka-streams` containing a Kafka Streams consumer using the Streams API
 
 ## Kafka Core APIs
 
+### Kafka Producer
+
+_coming soon ..._
+
+### Kafka Consumer
+
+_coming soon ..._
+
 ### Kafka Streams
 
-_will be added soon ..._
+_coming soon ..._

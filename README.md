@@ -26,7 +26,7 @@ Wait for a message log similar to this:
 
 > kafka-reactive-messaging-producer_1  | [AUDIT   ] CWWKF0011I: The defaultServer server is ready to run a smarter planet. The defaultServer server started in 36.693 seconds.
 
-If everything worked the producers start sending messages automatically every 2s. Additionally a custom message can be send by by calling `http://localhost:9080/kafka-reactive-messaging-producer/api/messages?msg=<custom message>`
+If everything worked the producers start sending messages automatically every 2s. Additionally a custom message can be send by by calling `http://localhost:9080/kafka-producer/api/messages?msg=<custom message>` or `http://localhost:9081/kafka-reactive-messaging-producer/api/messages?msg=<custom message>`
 
 ## Resolving issues
 

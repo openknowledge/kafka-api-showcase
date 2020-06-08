@@ -43,15 +43,3 @@ services:
     image: kafka-showcase/kafka-streams:0
     depends_on:
     - kafka-producer
-
-  kafka-reactive-messaging-producer:
-    image: kafka-showcase/kafka-reactive-messaging-producer:0
-    ports:
-    - 9081:9080
-    depends_on:
-    - kafka
-
-  kafka-reactive-messaging-consumer:
-    image: kafka-showcase/kafka-reactive-messaging-consumer:0
-    depends_on:
-    - kafka
