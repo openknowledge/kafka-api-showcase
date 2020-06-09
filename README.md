@@ -31,6 +31,8 @@ If everything worked the producers start sending messages automatically every 2s
 * `http://localhost:9081/kafka-ra-producer/api/messages?msg=<custom message>` 
 * `http://localhost:9082/kafka-reactive-messaging-producer/api/messages?msg=<custom message>`
 
+**_HINT: Starting all samples requires many resources, that's why we recommend to select a subset of all samples. Therefor each sample module provides its own docker-compose file that starts Kafka, Zookeeper and the corresponding Docker container._**
+
 ## Resolving issues
 
 Sometimes it may happen that the containers did not stop as expected when trying to stop the pipeline early. This may
