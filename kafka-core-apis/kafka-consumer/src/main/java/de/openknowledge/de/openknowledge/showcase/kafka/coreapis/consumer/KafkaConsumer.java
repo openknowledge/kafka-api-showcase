@@ -34,7 +34,7 @@ public class KafkaConsumer extends KafkaSubscriber<CustomMessage> {
   private static final Logger LOG = LoggerFactory.getLogger(KafkaConsumer.class);
 
   @Inject
-  protected KafkaConsumer(final Consumer<String, CustomMessage> consumer, @ConfigProperty(name = "kafka.topic") final String topic) {
+  protected KafkaConsumer(final Consumer<String, CustomMessage> consumer, @ConfigProperty(name = "KAFKA_TOPIC") final String topic) {
     super(consumer, topic);
   }
 

@@ -42,15 +42,15 @@ public class KafkaStreamConsumer {
   private static final Logger LOG = LoggerFactory.getLogger(KafkaStreamConsumer.class);
 
   @Inject
-  @ConfigProperty(name = "kafka-streams.bootstrap-servers")
+  @ConfigProperty(name = "KAFKA_HOST")
   private String server;
 
   @Inject
-  @ConfigProperty(name = "kafka-streams.application-id")
+  @ConfigProperty(name = "KAFKA_APP_ID")
   private String applicationId;
 
   @Inject
-  @ConfigProperty(name = "kafka-streams.topic")
+  @ConfigProperty(name = "KAFKA_TOPIC")
   private String topic;
 
   @PostConstruct

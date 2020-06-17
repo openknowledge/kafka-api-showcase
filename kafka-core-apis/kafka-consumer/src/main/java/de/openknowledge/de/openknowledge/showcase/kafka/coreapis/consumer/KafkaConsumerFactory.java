@@ -34,15 +34,15 @@ import javax.inject.Inject;
 public class KafkaConsumerFactory {
 
   @Inject
-  @ConfigProperty(name = "kafka.bootstrap.servers")
+  @ConfigProperty(name = "KAFKA_HOST")
   private String bootstrapServers;
 
   @Inject
-  @ConfigProperty(name = "kafka.client.id")
+  @ConfigProperty(name = "KAFKA_CLIENT_ID")
   private String clientId;
 
   @Inject
-  @ConfigProperty(name = "kafka.group.id")
+  @ConfigProperty(name = "KAFKA_GROUP_ID")
   private String groupId;
 
   @Produces

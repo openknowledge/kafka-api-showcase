@@ -500,7 +500,8 @@
                     <connection-definitions>
                         <connection-definition class-name="fish.payara.cloud.connectors.kafka.outbound.KafkaManagedConnectionFactory"
                                                jndi-name="java:/KafkaConnectionFactory" enabled="true" pool-name="ConnectionFactory">
-                            <config-property name="bootstrapServersConfig">kafka:9092</config-property>
+                            <config-property name="bootstrapServersConfig">${env.KAFKA_HOST}</config-property>
+                            <config-property name="clientId">${env.KAFKA_CLIENT_ID}</config-property>
                             <xa-pool>
                                 <min-pool-size>1</min-pool-size>
                                 <max-pool-size>20</max-pool-size>

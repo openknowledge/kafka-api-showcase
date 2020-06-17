@@ -42,11 +42,11 @@ public class ReadinessHealthCheck implements HealthCheck {
   private static final Logger LOG = LoggerFactory.getLogger(ReadinessHealthCheck.class);
 
   @Inject
-  @ConfigProperty(name = "kafka.bootstrap.servers")
+  @ConfigProperty(name = "KAFKA_HOST")
   private String kafkaServer;
 
   @Inject
-  @ConfigProperty(name = "kafka.group.id")
+  @ConfigProperty(name = "KAFKA_GROUP_ID")
   private String groupId;
 
   @Override

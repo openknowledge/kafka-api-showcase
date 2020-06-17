@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.openknowledge.showcase.kafka.reactive-messaging</groupId>
@@ -33,6 +33,15 @@
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
         <liberty.var.app.context.root>${project.artifactId}</liberty.var.app.context.root>
+
+        <!--suppress UnresolvedMavenProperty -->
+        <liberty.var.kafka.host>${env.KAFKA_HOST}</liberty.var.kafka.host>
+        <!--suppress UnresolvedMavenProperty -->
+        <liberty.var.kafka.topic>${env.KAFKA_TOPIC}</liberty.var.kafka.topic>
+        <!--suppress UnresolvedMavenProperty -->
+        <liberty.var.kafka.client_id>${env.KAFKA_CLIENT_ID}</liberty.var.kafka.client_id>
+        <!--suppress UnresolvedMavenProperty -->
+        <liberty.var.kafka.group_id>${env.KAFKA_GROUP_ID}</liberty.var.kafka.group_id>
     </properties>
 
     <dependencies>

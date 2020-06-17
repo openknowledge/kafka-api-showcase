@@ -13,7 +13,17 @@
 
     <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
 
-    <webApplication location="kafka-reactive-messaging-consumer.war" contextRoot="${app.context.root}"/>
+    <webApplication location="kafka-reactive-messaging-consumer.war" contextRoot="${app.context.root}">
+        <appProperties>
+            <property name="mp.messaging.connector.liberty-kafka.bootstrap.servers" value="${kafka.host}"/>
+            <property name="mp.messaging.incoming.message.connector" value="liberty-kafka"/>
+            <property name="mp.messaging.incoming.message.topic" value="${kafka.topic}"/>
+            <property name="mp.messaging.incoming.message.client.id" value="${kafka.client_id}"/>
+            <property name="mp.messaging.incoming.message.group.id" value="${kafka.group_id}"/>
+            <property name="mp.messaging.incoming.message.key.deserializer" value="org.apache.kafka.common.serialization.StringDeserializer"/>
+            <property name="mp.messaging.incoming.message.value.deserializer" value="de.openknowledge.showcase.kafka.reactive.messaging.consumer.CustomMessageDeserializer"/>
+        </appProperties>
+    </webApplication>
 
     <mpMetrics authentication="false"/>
 </server>

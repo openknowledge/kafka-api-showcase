@@ -36,7 +36,7 @@ public class KafkaProducer {
   private Producer<String, CustomMessage> producer;
 
   @Inject
-  @ConfigProperty(name = "kafka.topic")
+  @ConfigProperty(name = "KAFKA_TOPIC")
   private String topic;
 
   public void send(final CustomMessage message) {

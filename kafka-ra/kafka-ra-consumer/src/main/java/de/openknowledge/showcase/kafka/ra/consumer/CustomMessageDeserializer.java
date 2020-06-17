@@ -17,8 +17,9 @@ package de.openknowledge.showcase.kafka.ra.consumer;
 
 import org.apache.kafka.common.serialization.Deserializer;
 
-import javax.json.bind.JsonbBuilder;
 import java.util.Map;
+
+import javax.json.bind.JsonbBuilder;
 
 /**
  * JSON deserializer for the DTO {@link CustomMessage}.

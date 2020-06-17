@@ -15,4 +15,17 @@
         <module>kafka-ra</module>
         <module>kafka-reactive-messaging</module>
     </modules>
+
+    <developers>
+        <developer>
+            <name>Stephan Mueller</name>
+            <email>stephan.mueller@openknowledge.de</email>
+            <organization>open knowledge GmbH</organization>
+        </developer>
+        <developer>
+            <name>Max Weis</name>
+            <email>max.weis@openknowledge.de</email>
+            <organization>open knowledge GmbH</organization>
+        </developer>
+    </developers>
 </project>
