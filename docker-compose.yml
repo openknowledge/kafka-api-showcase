@@ -28,7 +28,7 @@ services:
       - zookeeper
 
   kafka-producer:
-    image: kafka-showcase/kafka-producer:0
+    image: kafka-api-showcase/kafka-producer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_TOPIC=messages-topic
@@ -39,7 +39,7 @@ services:
       - kafka
 
   kafka-consumer:
-    image: kafka-showcase/kafka-consumer:0
+    image: kafka-api-showcase/kafka-consumer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_TOPIC=messages-topic
@@ -49,7 +49,7 @@ services:
       - kafka
 
   kafka-streams:
-    image: kafka-showcase/kafka-streams:0
+    image: kafka-api-showcase/kafka-streams:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_TOPIC=messages-topic
@@ -59,7 +59,7 @@ services:
       - kafka-producer
 
   kafka-ra-producer:
-    image: kafka-showcase/kafka-ra-producer:0
+    image: kafka-api-showcase/kafka-ra-producer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_TOPIC=messages-topic
@@ -70,7 +70,7 @@ services:
       - kafka
 
   kafka-ra-consumer:
-    image: kafka-showcase/kafka-ra-consumer:0
+    image: kafka-api-showcase/kafka-ra-consumer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_CLIENT_ID=kafka-ra-consumer
@@ -78,7 +78,7 @@ services:
       - kafka
 
   kafka-reactive-messaging-producer:
-    image: kafka-showcase/kafka-reactive-messaging-producer:0
+    image: kafka-api-showcase/kafka-reactive-messaging-producer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_TOPIC=messages-topic
@@ -89,7 +89,7 @@ services:
       - kafka
 
   kafka-reactive-messaging-consumer:
-    image: kafka-showcase/kafka-reactive-messaging-consumer:0
+    image: kafka-api-showcase/kafka-reactive-messaging-consumer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_TOPIC=messages-topic

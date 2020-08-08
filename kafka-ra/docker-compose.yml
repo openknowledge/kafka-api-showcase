@@ -18,7 +18,7 @@ services:
       - zookeeper
 
   kafka-ra-producer:
-    image: kafka-showcase/kafka-ra-producer:0
+    image: kafka-api-showcase/kafka-ra-producer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_TOPIC=messages-topic
@@ -29,7 +29,7 @@ services:
       - kafka
 
   kafka-ra-consumer:
-    image: kafka-showcase/kafka-ra-consumer:0
+    image: kafka-api-showcase/kafka-ra-consumer:0
     environment:
       - KAFKA_HOST=kafka:9092
       - KAFKA_CLIENT_ID=kafka-ra-consumer
