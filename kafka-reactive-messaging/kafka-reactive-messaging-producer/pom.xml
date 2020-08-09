@@ -17,7 +17,7 @@
 
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <version.open-liberty>20.0.0.5</version.open-liberty>
+        <version.open-liberty>20.0.0.8</version.open-liberty>
 
         <version.jakarta-ee>8.0.0</version.jakarta-ee>
 
