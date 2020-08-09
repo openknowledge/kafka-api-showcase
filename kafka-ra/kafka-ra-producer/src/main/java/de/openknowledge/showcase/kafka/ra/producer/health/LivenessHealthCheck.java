@@ -13,29 +13,28 @@
  * See the License for the specific language governing permissions
  * and limitations under the License.
  */
-package de.openknowledge.showcase.kafka.jms.producer;
+package de.openknowledge.showcase.kafka.ra.producer.health;
 
-import org.apache.kafka.common.serialization.Serializer;
+import org.eclipse.microprofile.health.HealthCheck;
+import org.eclipse.microprofile.health.HealthCheckResponse;
+import org.eclipse.microprofile.health.Liveness;
 
-import java.util.Map;
-
-import javax.json.bind.JsonbBuilder;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
- * JSON serializer for the DTO {@link CustomMessage}.
+ * Custom health check which signals that application is 'live'.
  */
-public class CustomMessageSerializer implements Serializer<CustomMessage> {
+@Liveness
+@ApplicationScoped
+public class LivenessHealthCheck implements HealthCheck {
 
   @Override
-  public void configure(Map<String, ?> map, boolean b) {
-  }
+  public HealthCheckResponse call() {
 
-  @Override
-  public byte[] serialize(String topic, CustomMessage data) {
-    return JsonbBuilder.create().toJson(data).getBytes();
-  }
-
-  @Override
-  public void close() {
+    return HealthCheckResponse
+        .named(LivenessHealthCheck.class.getSimpleName())
+        .withData("live", true)
+        .up()
+        .build();
   }
 }

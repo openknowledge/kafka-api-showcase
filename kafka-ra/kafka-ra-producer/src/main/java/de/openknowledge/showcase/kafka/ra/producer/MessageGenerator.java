@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions
  * and limitations under the License.
  */
-package de.openknowledge.showcase.kafka.jms.producer;
+package de.openknowledge.showcase.kafka.ra.producer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
