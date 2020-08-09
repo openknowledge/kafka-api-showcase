@@ -1,4 +1,4 @@
-FROM jboss/wildfly:19.0.0.Final
+FROM jboss/wildfly:20.0.1.Final
 
 ARG WAR_FILE
 ARG KAFKA_RAR=kafka-rar-0.5.0.rar

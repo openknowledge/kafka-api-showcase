@@ -16,7 +16,7 @@
 
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
-        <version.wildfly>19.0.0.Final</version.wildfly>
+        <version.wildfly>20.0.1.Final</version.wildfly>
 
         <version.jakarta-ee>8.0.0</version.jakarta-ee>
 
