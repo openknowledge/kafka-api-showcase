@@ -17,6 +17,7 @@ package de.openknowledge.showcase.kafka.reactive.messaging.consumer.health;
 
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.ConsumerGroupListing;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.KafkaFuture;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.health.HealthCheck;
@@ -51,12 +52,7 @@ public class ReadinessHealthCheck implements HealthCheck {
   @Override
   public HealthCheckResponse call() {
     boolean up = isReady();
-    return HealthCheckResponse
-        .named(this
-            .getClass()
-            .getSimpleName())
-        .state(up)
-        .build();
+    return HealthCheckResponse.named(this.getClass().getSimpleName()).state(up).build();
   }
 
   private boolean isReady() {
@@ -66,26 +62,20 @@ public class ReadinessHealthCheck implements HealthCheck {
 
   private AdminClient createAdminClient() {
     Properties connectionProperties = new Properties();
-    connectionProperties.put("bootstrap.servers", kafkaServer);
+    connectionProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer);
     AdminClient adminClient = AdminClient.create(connectionProperties);
     return adminClient;
   }
 
   private boolean checkIfBarConsumerGroupRegistered(final AdminClient adminClient) {
-    KafkaFuture<Collection<ConsumerGroupListing>> consumerGroupsFuture = adminClient
-        .listConsumerGroups()
-        .valid();
+    KafkaFuture<Collection<ConsumerGroupListing>> consumerGroupsFuture = adminClient.listConsumerGroups().valid();
 
     try {
       Collection<ConsumerGroupListing> consumerGroups = consumerGroupsFuture.get();
       for (ConsumerGroupListing consumerGroup : consumerGroups) {
         LOG.info("groupId: " + consumerGroup.groupId());
       }
-      return consumerGroups
-          .stream()
-          .anyMatch(group -> group
-              .groupId()
-              .equals(groupId));
+      return consumerGroups.stream().anyMatch(group -> group.groupId().equals(groupId));
     } catch (Exception e) {
       LOG.error(e.getMessage(), e);
       return false;

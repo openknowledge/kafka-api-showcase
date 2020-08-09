@@ -17,6 +17,7 @@ package de.openknowledge.showcase.kafka.reactive.messaging.producer.health;
 
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.TopicListing;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.KafkaFuture;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.health.HealthCheck;
@@ -47,12 +48,7 @@ public class ReadinessHealthCheck implements HealthCheck {
   @Override
   public HealthCheckResponse call() {
     boolean up = isReady();
-    return HealthCheckResponse
-        .named(this
-            .getClass()
-            .getSimpleName())
-        .state(up)
-        .build();
+    return HealthCheckResponse.named(this.getClass().getSimpleName()).state(up).build();
   }
 
   private boolean isReady() {
@@ -62,15 +58,13 @@ public class ReadinessHealthCheck implements HealthCheck {
 
   private AdminClient createAdminClient() {
     Properties connectionProperties = new Properties();
-    connectionProperties.put("bootstrap.servers", kafkaServer);
+    connectionProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServer);
     AdminClient adminClient = AdminClient.create(connectionProperties);
     return adminClient;
   }
 
   private boolean checkIfBarConsumerGroupRegistered(final AdminClient adminClient) {
-    KafkaFuture<Collection<TopicListing>> topicsFuture = adminClient
-        .listTopics()
-        .listings();
+    KafkaFuture<Collection<TopicListing>> topicsFuture = adminClient.listTopics().listings();
 
     try {
       Collection<TopicListing> topics = topicsFuture.get();
