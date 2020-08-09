@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions
  * and limitations under the License.
  */
-package de.openknowledge.de.openknowledge.showcase.kafka.coreapis.consumer.health;
+package de.openknowledge.showcase.kafka.coreapis.consumer.health;
 
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.ConsumerGroupListing;

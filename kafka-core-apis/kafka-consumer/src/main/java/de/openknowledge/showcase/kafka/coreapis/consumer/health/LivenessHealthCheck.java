@@ -13,22 +13,28 @@
  * See the License for the specific language governing permissions
  * and limitations under the License.
  */
-package de.openknowledge.de.openknowledge.showcase.kafka.coreapis.consumer;
+package de.openknowledge.showcase.kafka.coreapis.consumer.health;
 
-import org.apache.kafka.common.serialization.Deserializer;
+import org.eclipse.microprofile.health.HealthCheck;
+import org.eclipse.microprofile.health.HealthCheckResponse;
+import org.eclipse.microprofile.health.Liveness;
 
-import javax.json.bind.JsonbBuilder;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
- * JSON deserializer for the DTO {@link CustomMessage}.
+ * Custom health check which signals that application is 'live'.
  */
-public class CustomMessageDeserializer implements Deserializer<CustomMessage> {
+@Liveness
+@ApplicationScoped
+public class LivenessHealthCheck implements HealthCheck {
 
   @Override
-  public CustomMessage deserialize(String topic, byte[] data) {
-    if (data == null) {
-      return null;
-    }
-    return JsonbBuilder.create().fromJson(new String(data), CustomMessage.class);
+  public HealthCheckResponse call() {
+
+    return HealthCheckResponse
+        .named(LivenessHealthCheck.class.getSimpleName())
+        .withData("live", true)
+        .up()
+        .build();
   }
 }
