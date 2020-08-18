@@ -103,7 +103,7 @@ Plain messages are created using:
 The `org.eclipse.microprofile.reactive.messaging.Incoming` annotation is used on a method from a CDI bean to indicate that the method consumes messages from the specified channel:
 
 ```
-@Incoming("<channel-name>")                                                // (1)
+@Incoming("<channel-name>")                                            // (1)
 public CompletionStage<Void> consume(Message<String> message) {        // (2)
   return message.ack();
 }
@@ -132,7 +132,7 @@ Explicit consumption of a `KafkaMessage`
 The `org.eclipse.microprofile.reactive.messaging.Outgoing` annotation is used to annotate a method from a CDI bean to indicate that the method publishes messages to a specified channel:
 
 ```
-@Outgoing("<channel-name>")                                        // (1)
+@Outgoing("<channel-name>")                                    // (1)
 public Message<String> publish() {                             // (2)
   return Message.of("hello");                                  // (3)
 }
@@ -305,7 +305,7 @@ In addition to that you have to activate the MicroProfile in your `server.xml`:
 
 ### Sending And Receiving Kafka Records
 
-The Kafka Connector send and retrieves Kafka Records from Kafka Brokers and maps each of them to Reactive Messaging `Messages` and vice versa.
+The Kafka Connector sends and retrieves Kafka Records from Kafka Brokers and maps each of them to Reactive Messaging `Messages` and vice versa.
 
 For the following example a Kafka broker, which is accessible at `kafka:9092` and a topic named `custom-messages` are used.
 
@@ -316,13 +316,13 @@ To send messages to the topic `custom-messages` an outgoing channel has to be co
 
 **microprofile-config.properties**
 ```
-mp.messaging.connector.liberty-kafka.bootstrap.servers=kafka:9092
+mp.messaging.connector.liberty-kafka.bootstrap.servers=kafka:9092                                                                  (1)
 
-mp.messaging.outgoing.message.connector=liberty-kafka
-mp.messaging.outgoing.message.topic=custom-messages
-mp.messaging.outgoing.message.client.id=kafka-reactive-messaging-producer
-mp.messaging.outgoing.message.key.serializer=org.apache.kafka.common.serialization.StringSerializer
-mp.messaging.outgoing.message.value.serializer=de.openknowledge.showcase.kafka.reactive.messaging.producer.CustomMessageSerializer
+mp.messaging.outgoing.message.connector=liberty-kafka                                                                              (2)
+mp.messaging.outgoing.message.topic=custom-messages                                                                                (3)
+mp.messaging.outgoing.message.client.id=kafka-reactive-messaging-producer                                                          (4)
+mp.messaging.outgoing.message.key.serializer=org.apache.kafka.common.serialization.StringSerializer                                (5)
+mp.messaging.outgoing.message.value.serializer=de.openknowledge.showcase.kafka.reactive.messaging.producer.CustomMessageSerializer (6)
 ```
 
 1. Configure the Kafka connector globally
@@ -334,7 +334,7 @@ mp.messaging.outgoing.message.value.serializer=de.openknowledge.showcase.kafka.r
 
 To send messages to an outgoing channel a `org.reactivestreams.Publisher` can be used. Therefore a **non-argument** method annotated with the annotation `@Outgoing("<channel-name>")` has to be provided. 
 
-While generating a continuously stream of messages with a `io.reactivex.rxjava3.core.Flowable`, send a single message seams to become a bigger problem. Having a method providing a stream without any argument allowed, it isn't possible to pass custom messages to the reactive stream, isn't it? Even if combining imperative programming and reactive seams to be tricky, there are solutions available. RxJava provides a `io.reactivex.rxjava3.core.FlowableEmitter` which enables to add single messages to a reactive stream. 
+While generating a continuous stream of messages with a `io.reactivex.rxjava3.core.Flowable`, sending a single message seams to become a bigger problem. You cannot pass an argument to a method providing a stream without any argument allowed. Even if combining imperative programming and reactive seams to be tricky, there are solutions available. RxJava provides a `io.reactivex.rxjava3.core.FlowableEmitter` which enables to add single messages to a reactive stream. 
 
 For further information about _reactive streams_ and _RxJava_ please check the corresponding [documentation](https://github.com/ReactiveX/RxJava).
 
@@ -494,14 +494,14 @@ To retrieve messages from the topic `custom-messages`, a incoming channel has to
 
 **microprofile-config.properties**
 ```
-mp.messaging.connector.liberty-kafka.bootstrap.servers=kafka:9092
+mp.messaging.connector.liberty-kafka.bootstrap.servers=kafka:9092                                                                       (1)
 
-mp.messaging.incoming.message.connector=liberty-kafka
-mp.messaging.incoming.message.topic=custom-messages
-mp.messaging.incoming.message.client.id=kafka-reactive-messaging-consumer
-mp.messaging.incoming.message.group.id=kafka-reactive-messaging-consumer
-mp.messaging.incoming.message.key.deserializer=org.apache.kafka.common.serialization.StringDeserializer
-mp.messaging.incoming.message.value.deserializer=de.openknowledge.showcase.kafka.reactive.messaging.consumer.CustomMessageDeserializer
+mp.messaging.incoming.message.connector=liberty-kafka                                                                                   (2)
+mp.messaging.incoming.message.topic=custom-messages                                                                                     (3)
+mp.messaging.incoming.message.client.id=kafka-reactive-messaging-consumer                                                               (4)
+mp.messaging.incoming.message.group.id=kafka-reactive-messaging-consumer                                                                (5)
+mp.messaging.incoming.message.key.deserializer=org.apache.kafka.common.serialization.StringDeserializer                                 (6)
+mp.messaging.incoming.message.value.deserializer=de.openknowledge.showcase.kafka.reactive.messaging.consumer.CustomMessageDeserializer  (7)
 ```
 
 1. Configure the Kafka connector globally
@@ -512,7 +512,7 @@ mp.messaging.incoming.message.value.deserializer=de.openknowledge.showcase.kafka
 6. Configure a serializer (e.g. StringSerializer) to be used
 7. Configure the custom serializer
 
-To receive messages from a incoming channel a reactive message consumer has to be implemented. Therefor a method annotated with the annotation `@Incoming("<channel-name>")` and the expected message as a parameter has to be provided.
+To receive messages from a incoming channel a reactive message consumer has to be implemented. Therefore a method annotated with the annotation `@Incoming("<channel-name>")` and the expected message as a parameter has to be provided.
    
 **KafkaReactiveMessagingConsumer**
 ```
