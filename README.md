@@ -1,4 +1,4 @@
-# Kafka Showcase
+# Kafka API Showcase
 
 This is a showcase demonstrating different ways to connect and communicate with Apache Kafka. It contains sample Java Enterprise based message producer and consumer applications using [Microprofile Reactive Messaging](https://microprofile.io/project/eclipse/microprofile-reactive-messaging), Kafka Resource Adapter or Kafka Core APIS like [Kafka Streams](https://kafka.apache.org/documentation/streams/) to send or receive messages from the Kafka broker. 
 

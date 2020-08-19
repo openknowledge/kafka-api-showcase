@@ -18,10 +18,9 @@ package de.openknowledge.showcase.kafka.coreapis.streams;
 import org.apache.kafka.common.serialization.Serdes;
 
 /**
- * TODO add javadoc
+ * Serdes for CustomMessages, uses {@link CustomMessageSerializer} Serializer and {@link CustomMessageDeserializer} Deserializer
  */
 public class CustomMessageSerdes extends Serdes.WrapperSerde<CustomMessage> {
-
   public CustomMessageSerdes() {
     super(new CustomMessageSerializer(), new CustomMessageDeserializer());
   }
