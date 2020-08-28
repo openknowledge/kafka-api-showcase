@@ -33,7 +33,7 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 /**
- * Kafka consumer that receives messages from a Kafka topic. The topic is configured in the microprofile-config.properties.
+ * Kafka consumer that receives messages from a Kafka topic.
  */
 @Singleton
 @Startup
@@ -70,8 +70,7 @@ public class KafkaStreamConsumer {
   private Topology buildTopology() {
     StreamsBuilder builder = new StreamsBuilder();
 
-    KStream<String, CustomMessage> stream = builder.stream(topic);
-    stream.peek((s, customMessage) -> LOG.info("Received Message {}", customMessage));
+    builder.stream(topic).peek((s, customMessage) -> LOG.info("Received Message {}", customMessage));
 
     return builder.build();
   }
